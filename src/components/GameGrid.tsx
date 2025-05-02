@@ -10,11 +10,7 @@ interface GameGridProps {
 }
 
 const GameGrid = ({ selectedGenre }: GameGridProps) => {
-  const { game, error, isLoading } = useGames(
-    selectedGenre,
-    { params: { genres: selectedGenre?.id } },
-    [selectedGenre?.id]
-  );
+  const { data, error, isLoading } = useGames(selectedGenre);
   const skeletons = [1, 2, 3, 4, 5, 6];
 
   return (
@@ -31,7 +27,7 @@ const GameGrid = ({ selectedGenre }: GameGridProps) => {
               <SkeletonCard></SkeletonCard>
             </GameCardContainer>
           ))}
-        {game.map((games) => (
+        {data.map((games) => (
           <GameCardContainer key={games.id}>
             <GameCard game={games}></GameCard>
           </GameCardContainer>
