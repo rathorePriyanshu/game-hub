@@ -1,5 +1,6 @@
 import {
   Button,
+  Heading,
   HStack,
   Image,
   Link,
@@ -30,6 +31,9 @@ const GenreList = ({ SelectedGenre, onSelectedGenre }: GenreListProps) => {
         skeletons.map((skeleton) => (
           <SkeletonList key={skeleton}></SkeletonList>
         ))}
+      <Heading fontSize="2xl" marginBottom={3}>
+        Genre
+      </Heading>
       <List>
         {data.map((genre) => (
           <ListItem key={genre.id} paddingY="5px">
@@ -37,6 +41,7 @@ const GenreList = ({ SelectedGenre, onSelectedGenre }: GenreListProps) => {
               <Image
                 boxSize={"32px"}
                 borderRadius={8}
+                objectFit="cover"
                 src={getCroopedImageURL(genre.image_background)}
               ></Image>
               <Button
@@ -44,6 +49,8 @@ const GenreList = ({ SelectedGenre, onSelectedGenre }: GenreListProps) => {
                 fontWeight={genre.id === SelectedGenre?.id ? "bold" : "normal"}
                 onClick={() => onSelectedGenre(genre)}
                 fontSize="lg"
+                whiteSpace="normal"
+                textAlign="left"
               >
                 {genre.name}
               </Button>
