@@ -13,7 +13,7 @@ interface GameGridProps {
 
 const GameGrid = ({ gameQuery }: GameGridProps) => {
   const { data, error, isLoading } = useGames(gameQuery);
-  const skeletons = [1, 2, 3, 4, 5, 6];
+  const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
   return (
     <>
