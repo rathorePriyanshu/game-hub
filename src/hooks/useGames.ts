@@ -19,13 +19,13 @@ export interface Games {
 
 const useGames = (gameQuery: GameQuery) =>
   useQuery<FetchResponse<Games>, Error>({
-    queryKey: ["games"],
+    queryKey: ["games", gameQuery],
     queryFn: () =>
       apiClient
         .get<FetchResponse<Games>>("/games", {
           params: {
             genres: gameQuery.genre?.id,
-            platforms: gameQuery.platform?.id,
+            parent_platforms: gameQuery.platform?.id,
             ordering: gameQuery.sortOrder,
             search: gameQuery.searchGame,
           },
