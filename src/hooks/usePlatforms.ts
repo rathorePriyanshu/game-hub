@@ -8,7 +8,7 @@ export interface Platforms {
   slug: string;
 }
 
-const usePlatform = () =>
+const usePlatforms = () =>
   useQuery({
     queryKey: ["platforms"],
     queryFn: () =>
@@ -19,4 +19,4 @@ const usePlatform = () =>
     initialData: { count: platforms.length, results: platforms },
   });
 
-export default usePlatform;
+export default usePlatforms;
