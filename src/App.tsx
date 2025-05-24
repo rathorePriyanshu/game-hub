@@ -9,16 +9,7 @@ import { Platforms } from "./hooks/usePlatforms";
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
 
-export interface GameQuery {
-  genreId?: number;
-  platformId?: number;
-  sortOrder: string;
-  searchGame: string;
-}
-
 function App() {
-  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-
   // const [Selectedgenre, setSelectedGenre] = useState<Genre | null>(null);
   // const [selectedPlatfroms, setSelectedPlatfroms] = useState<Platforms | null>(
   //   null
@@ -30,46 +21,26 @@ function App() {
       templateColumns={{ base: "1fr", lg: "200px 1fr" }}
     >
       <GridItem area={"nav"}>
-        <NavBar
-          onSearchGame={(searchGame) =>
-            setGameQuery({ ...gameQuery, searchGame })
-          }
-        ></NavBar>
+        <NavBar></NavBar>
       </GridItem>
       <Show above="lg">
         <GridItem paddingX={5} area={"aside"}>
-          <GenreList
-            SelectedGenreId={gameQuery.genreId}
-            onSelectedGenre={(genre) =>
-              setGameQuery({ ...gameQuery, genreId: genre.id })
-            }
-          ></GenreList>
+          <GenreList></GenreList>
         </GridItem>
       </Show>
       <GridItem area={"main"}>
         <Box paddingLeft={2}>
-          <GameHeading gameQuery={gameQuery} />
+          <GameHeading />
           <Flex marginBottom={5}>
             <Box marginRight={5}>
-              <PlatformSelector
-                selectedPlatformId={gameQuery.platformId}
-                onSelectPlatform={(platform) =>
-                  setGameQuery({ ...gameQuery, platformId: platform.id })
-                }
-              ></PlatformSelector>
+              <PlatformSelector></PlatformSelector>
             </Box>
-            <SortSelector
-              onSelectOrder={(sortOrder) =>
-                setGameQuery({ ...gameQuery, sortOrder })
-              }
-              selectedOrder={gameQuery.sortOrder}
-            ></SortSelector>
+            <SortSelector></SortSelector>
           </Flex>
         </Box>
         <GameGrid
-          gameQuery={gameQuery}
-          // selectedPlatform={gameQuery.platform}
-          // selectedGenre={gameQuery.genre}
+        // selectedPlatform={gameQuery.platform}
+        // selectedGenre={gameQuery.genre}
         ></GameGrid>
       </GridItem>
     </Grid>

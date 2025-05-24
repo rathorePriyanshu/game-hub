@@ -11,14 +11,12 @@ import {
 import useGenre, { Genre } from "../hooks/useGenre";
 import getCroopedImageURL from "../services/image-url";
 import { SkeletonList } from "./SkeletonList";
+import useGameQueryStore from "../store";
 
-interface GenreListProps {
-  onSelectedGenre: (genre: Genre) => void;
-  SelectedGenreId?: number;
-}
-
-const GenreList = ({ SelectedGenreId, onSelectedGenre }: GenreListProps) => {
+const GenreList = () => {
   const { data, error, isLoading } = useGenre();
+  const SelectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
+  const setSelectedGenreId = useGameQueryStore((s) => s.setGenreId);
 
   if (error) return null;
   // if (isLoading) return <Spinner></Spinner>;
@@ -47,7 +45,7 @@ const GenreList = ({ SelectedGenreId, onSelectedGenre }: GenreListProps) => {
               <Button
                 variant="link"
                 fontWeight={genre.id === SelectedGenreId ? "bold" : "normal"}
-                onClick={() => onSelectedGenre(genre)}
+                onClick={() => setSelectedGenreId(genre.id)}
                 fontSize="lg"
                 whiteSpace="normal"
                 textAlign="left"
