@@ -25,6 +25,12 @@ class APIClient<T> {
       .then((res) => res.data);
   };
 
+  get = (id: number | string) => {
+    return apiInterface
+      .get<T>(this.endpoint + "/" + id)
+      .then((res) => res.data);
+  };
+
   post = () => {
     return apiInterface
       .post<FetchResponse<T>>(this.endpoint)
