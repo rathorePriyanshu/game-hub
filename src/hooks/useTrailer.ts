@@ -6,7 +6,7 @@ const useTrailer = (Id: number) => {
   const apiClient = new APIClient<Trailer>(`/games/${Id}/movies`);
 
   return useQuery({
-    queryKey: ["games", Id],
+    queryKey: ["trailers", Id],
     queryFn: apiClient.getAll,
   });
 };
