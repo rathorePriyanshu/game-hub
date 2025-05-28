@@ -3,16 +3,13 @@ import {
   Heading,
   HStack,
   Image,
-  Link,
   List,
   ListItem,
-  Spinner,
 } from "@chakra-ui/react";
 import useGenre from "../hooks/useGenre";
-import { Genre } from "../Entities/Genre";
 import getCroopedImageURL from "../services/image-url";
-import { SkeletonList } from "./SkeletonList";
 import useGameQueryStore from "../store";
+import { SkeletonList } from "./SkeletonList";
 
 const GenreList = () => {
   const { data, error, isLoading } = useGenre();
